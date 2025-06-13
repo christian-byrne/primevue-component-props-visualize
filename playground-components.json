@@ -1,0 +1,1890 @@
+[
+  {
+    "name": "Button",
+    "component": "Button",
+    "content": "Click Me",
+    "defaultProps": {
+      "label": "Click Me",
+      "icon": "pi pi-check",
+      "iconPos": "left"
+    },
+    "props": [
+      {
+        "name": "style",
+        "type": "any",
+        "description": "Inline style of the button.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "class",
+        "type": "any",
+        "description": "Style class of the button.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "description": "Text of the button.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "icon",
+        "type": "string | undefined",
+        "description": "Name of the icon.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "iconPos",
+        "type": "'left' | 'right' | 'top' | 'bottom' | undefined",
+        "description": "Position of the icon.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ]
+      },
+      {
+        "name": "iconClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the icon.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "badge",
+        "type": "string | undefined",
+        "description": "Value of the badge.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "badgeClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the badge.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "badgeSeverity",
+        "type": "HintedString<'secondary' | 'info' | 'success' | 'warn' | 'danger' | 'contrast'> | null | undefined",
+        "description": "Severity type of the badge.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "loading",
+        "type": "boolean | undefined",
+        "description": "Whether the button is in loading state.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "loadingIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in loading state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "as",
+        "type": "string | Component | undefined",
+        "description": "Use to change the HTML tag of root element.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "description": "When enabled, it changes the default rendered element for the one passed as a child element.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "link",
+        "type": "boolean | undefined",
+        "description": "Add a link style to the button.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "severity",
+        "type": "HintedString<'secondary' | 'success' | 'info' | 'warn' | 'help' | 'danger' | 'contrast'> | undefined",
+        "description": "Defines the style of the button.",
+        "priority": "medium",
+        "inputType": "select",
+        "options": [
+          "",
+          "secondary",
+          "success",
+          "info",
+          "warn",
+          "help",
+          "danger",
+          "contrast"
+        ]
+      },
+      {
+        "name": "raised",
+        "type": "boolean | undefined",
+        "description": "Add a shadow to indicate elevation.",
+        "priority": "medium",
+        "inputType": "boolean"
+      },
+      {
+        "name": "rounded",
+        "type": "boolean | undefined",
+        "description": "Add a circular border radius to the button.",
+        "priority": "medium",
+        "inputType": "boolean"
+      },
+      {
+        "name": "text",
+        "type": "boolean | undefined",
+        "description": "Add a textual class to the button without a background initially.",
+        "priority": "medium",
+        "inputType": "boolean"
+      },
+      {
+        "name": "outlined",
+        "type": "boolean | undefined",
+        "description": "Add a border class without a background initially.",
+        "priority": "medium",
+        "inputType": "boolean"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined",
+        "description": "Defines the size of the button.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "variant",
+        "type": "'outlined' | 'text' | 'link' | undefined",
+        "description": "Specifies the variant of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "outlined",
+          "text", 
+          "link"
+        ]
+      },
+      {
+        "name": "plain",
+        "type": "boolean | undefined",
+        "description": "Add a plain textual class to the button without a background initially.  [DEPRECATED] since v4.2.0. Use a contrast severity instead.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "fluid",
+        "type": "boolean | undefined",
+        "description": "Spans 100% width of the container when enabled.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "InputNumber",
+    "component": "InputNumber",
+    "content": "",
+    "defaultProps": {
+      "modelValue": 42,
+      "placeholder": "Enter number...",
+      "showButtons": true
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "Nullable<number>",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "number"
+      },
+      {
+        "name": "defaultValue",
+        "type": "Nullable<number>",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "number"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "format",
+        "type": "boolean | undefined",
+        "description": "Whether to format the value.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "showButtons",
+        "type": "boolean | undefined",
+        "description": "Displays spinner buttons.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "buttonLayout",
+        "type": "'stacked' | 'horizontal' | 'vertical' | undefined",
+        "description": "Layout of the buttons.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "stacked",
+          "horizontal",
+          "vertical"
+        ]
+      },
+      {
+        "name": "incrementButtonClass",
+        "type": "string | undefined",
+        "description": "Style class of the increment button.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "decrementButtonClass",
+        "type": "string | undefined",
+        "description": "Style class of the decrement button.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "incrementButtonIcon",
+        "type": "string | undefined",
+        "description": "Style class of the increment icon.  [DEPRECATED] since v4.0. Use 'incrementIcon'.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "incrementIcon",
+        "type": "string | undefined",
+        "description": "Style class of the increment icon.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "decrementButtonIcon",
+        "type": "string | undefined",
+        "description": "Style class of the decrement icon.  [DEPRECATED] since v4.0. Use 'decrementIcon'.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "decrementIcon",
+        "type": "string | undefined",
+        "description": "Style class of the decrement icon.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "locale",
+        "type": "string | undefined",
+        "description": "Locale to be used in formatting.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "localeMatcher",
+        "type": "'lookup' | 'best fit' | undefined",
+        "description": "The locale matching algorithm to use. Possible values are 'lookup' and 'best fit'; the default is 'best fit'. See [Locale Negotation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locale_negotiation) for details.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "mode",
+        "type": "'decimal' | 'currency' | undefined",
+        "description": "Defines the behavior of the component.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "decimal",
+          "currency"
+        ]
+      },
+      {
+        "name": "prefix",
+        "type": "string | undefined",
+        "description": "Text to display before the value.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "suffix",
+        "type": "string | undefined",
+        "description": "Text to display after the value.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "currency",
+        "type": "string | undefined",
+        "description": "The currency to use in currency formatting. Possible values are the [ISO 4217 currency codes](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency), such as 'USD' for the US dollar, 'EUR' for the euro, or 'CNY' for the Chinese RMB. There is no default value; if the style is 'currency', the currency property must be provided.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "currencyDisplay",
+        "type": "string | undefined",
+        "description": "How to display the currency in currency formatting. Possible values are 'symbol' to use a localized currency symbol such as €, 'code' to use the ISO currency code, 'name' to use a localized currency name such as 'dollar'.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "useGrouping",
+        "type": "boolean | undefined",
+        "description": "Whether to use grouping separators, such as thousands separators or thousand/lakh/crore separators.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "minFractionDigits",
+        "type": "number | undefined",
+        "description": "The minimum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number and percent formatting is 0; the default for currency formatting is the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information).",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "maxFractionDigits",
+        "type": "number | undefined",
+        "description": "The maximum number of fraction digits to use. Possible values are from 0 to 20; the default for plain number formatting is the larger of minimumFractionDigits and 3; the default for currency formatting is the larger of minimumFractionDigits and the number of minor unit digits provided by the [ISO 4217 currency code](https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=maintenance-agency) list (2 if the list doesn't provide that information).",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "roundingMode",
+        "type": "RoundingMode",
+        "description": "How decimals should be rounded. The default value is `\"halfExpand\"`, [further information](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#roundingmode).",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "min",
+        "type": "number | undefined",
+        "description": "Minimum boundary value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "description": "Maximum boundary value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "step",
+        "type": "number | undefined",
+        "description": "Step factor to increment/decrement the value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "allowEmpty",
+        "type": "boolean | undefined",
+        "description": "Determines whether the input field is empty.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "highlightOnFocus",
+        "type": "boolean | undefined",
+        "description": "Highlights automatically the input value.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined",
+        "description": "Defines the size of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "variant",
+        "type": "'outlined' | 'filled' | undefined",
+        "description": "Specifies the input variant of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "outlined",
+          "filled"
+        ]
+      },
+      {
+        "name": "readonly",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that an input field is read-only.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "description": "Placeholder text for the input.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "fluid",
+        "type": "boolean | undefined",
+        "description": "Spans 100% width of the container when enabled.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "inputId",
+        "type": "string | undefined",
+        "description": "Identifier of the focus input to match a label defined for the chips.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "inputClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "inputStyle",
+        "type": "object | undefined",
+        "description": "Inline style of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "ariaLabelledby",
+        "type": "string | undefined",
+        "description": "Establishes relationships between the component and label(s) where its value should be one or more element IDs.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "description": "Establishes a string value that labels the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "InputText",
+    "component": "InputText",
+    "content": "",
+    "defaultProps": {
+      "modelValue": "Sample text",
+      "placeholder": "Enter text..."
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "Nullable<string>",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultValue",
+        "type": "Nullable<string>",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined | null",
+        "description": "Defines the size of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "",
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined | null",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "variant",
+        "type": "'outlined' | 'filled' | undefined | null",
+        "description": "Specifies the input variant of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "outlined",
+          "filled"
+        ]
+      },
+      {
+        "name": "fluid",
+        "type": "boolean | undefined | null",
+        "description": "Spans 100% width of the container when enabled.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "Select",
+    "component": "Select",
+    "content": "",
+    "defaultProps": {
+      "options": [
+        {
+          "label": "New York",
+          "value": "ny"
+        },
+        {
+          "label": "London",
+          "value": "ldn"
+        },
+        {
+          "label": "Paris",
+          "value": "prs"
+        },
+        {
+          "label": "Tokyo",
+          "value": "tky"
+        }
+      ],
+      "optionLabel": "label",
+      "optionValue": "value",
+      "placeholder": "Select a city..."
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "any",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultValue",
+        "type": "any",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "options",
+        "type": "any[]",
+        "description": "An array of select items to display as the available options.",
+        "priority": "high",
+        "inputType": "readonly"
+      },
+      {
+        "name": "optionLabel",
+        "type": "string | ((data: any) => string) | undefined",
+        "description": "Property name or getter function to use as the label of an option.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionValue",
+        "type": "string | ((data: any) => any) | undefined",
+        "description": "Property name or getter function to use as the value of an option, defaults to the option itself when not defined.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionDisabled",
+        "type": "string | ((data: any) => boolean) | undefined",
+        "description": "Property name or getter function to use as the disabled flag of an option, defaults to false when not defined.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "optionGroupLabel",
+        "type": "string | ((data: any) => string) | undefined",
+        "description": "Property name or getter function to use as the label of an option group.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionGroupChildren",
+        "type": "string | ((data: any) => any[]) | undefined",
+        "description": "Property name or getter function that refers to the children options of option group.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "scrollHeight",
+        "type": "string | undefined",
+        "description": "Height of the viewport, a scrollbar is defined if height of list exceeds this value.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filter",
+        "type": "boolean | undefined",
+        "description": "When specified, displays a filter input at header.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "filterPlaceholder",
+        "type": "string | undefined",
+        "description": "Placeholder text to show when filter input is empty.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "filterLocale",
+        "type": "string | undefined",
+        "description": "Locale to use in filtering. The default locale is the host environment's current locale.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterMatchMode",
+        "type": "HintedString<'contains' | 'startsWith' | 'endsWith'> | undefined",
+        "description": "Defines the filtering algorithm to use when searching the options.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterFields",
+        "type": "string[] | undefined",
+        "description": "Fields used when filtering the options, defaults to optionLabel.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "editable",
+        "type": "boolean | undefined",
+        "description": "When present, custom value instead of predefined options can be entered using the editable input field.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "description": "Default text to display when no option is selected.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined",
+        "description": "Defines the size of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "",
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "variant",
+        "type": "'outlined' | 'filled' | undefined",
+        "description": "Specifies the input variant of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "outlined",
+          "filled"
+        ]
+      },
+      {
+        "name": "dataKey",
+        "type": "string | undefined",
+        "description": "A property to uniquely identify an option.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "showClear",
+        "type": "boolean | undefined",
+        "description": "When enabled, a clear icon is displayed to clear the value.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "fluid",
+        "type": "boolean | undefined",
+        "description": "Spans 100% width of the container when enabled.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "inputId",
+        "type": "string | undefined",
+        "description": "[DEPRECATED] since v4.0. Use 'labelId' instead.Identifier of the underlying input element.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "inputStyle",
+        "type": "object | undefined",
+        "description": "[DEPRECATED] since v4.0. Use 'labelStyle' instead.Inline style of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "inputClass",
+        "type": "string | object | undefined",
+        "description": "[DEPRECATED] since v4.0. Use 'labelClass' instead.Style class of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "labelId",
+        "type": "string | undefined",
+        "description": "Identifier of the underlying label element.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "labelStyle",
+        "type": "object | undefined",
+        "description": "Inline style of the label field.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "labelClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the label field.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "panelStyle",
+        "type": "object | undefined",
+        "description": "[DEPRECATED] since v4.0. Use 'overlayStyle' instead.Inline style of the overlay panel.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "panelClass",
+        "type": "string | object | undefined",
+        "description": "[DEPRECATED] since v4.0. Use 'overlayClass' instead.Style class of the overlay panel.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "overlayStyle",
+        "type": "object | undefined",
+        "description": "Inline style of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "overlayClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "appendTo",
+        "type": "HintedString<'body' | 'self'> | undefined | HTMLElement",
+        "description": "A valid query selector or an HTMLElement to specify where the overlay gets attached.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "loading",
+        "type": "boolean | undefined",
+        "description": "Whether the select is in loading state.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "clearIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in clear button.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dropdownIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in the select.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in filter input.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "loadingIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in loading state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "resetFilterOnHide",
+        "type": "boolean",
+        "description": "Clears the filter value when hiding the select.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "resetFilterOnClear",
+        "type": "boolean",
+        "description": "Clears the filter value when clicking on the clear icon.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "virtualScrollerOptions",
+        "type": "VirtualScrollerProps",
+        "description": "Whether to use the virtualScroller feature. The properties of VirtualScroller component can be used like an object in it.",
+        "priority": "high",
+        "inputType": "readonly"
+      },
+      {
+        "name": "autoOptionFocus",
+        "type": "boolean | undefined",
+        "description": "Whether to focus on the first visible or selected element when the overlay panel is shown.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "autoFilterFocus",
+        "type": "boolean | undefined",
+        "description": "Whether to focus on the filter element when the overlay panel is shown.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "selectOnFocus",
+        "type": "boolean | undefined",
+        "description": "When enabled, the focused option is selected.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "focusOnHover",
+        "type": "boolean | undefined",
+        "description": "When enabled, the focus is placed on the hovered option.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "highlightOnSelect",
+        "type": "boolean | undefined",
+        "description": "Whether the selected option will be add highlight class.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "checkmark",
+        "type": "boolean | undefined",
+        "description": "Whether the selected option will be shown with a check mark.",
+        "priority": "low",
+        "inputType": "boolean"
+      }
+    ]
+  },
+  {
+    "name": "ColorPicker",
+    "component": "ColorPicker",
+    "content": "",
+    "defaultProps": {
+      "modelValue": "#42b883"
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "any",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultColor",
+        "type": "any",
+        "description": "Initial color to display when value is not defined.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultValue",
+        "type": "any",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "inline",
+        "type": "boolean | undefined",
+        "description": "Whether to display as an overlay or not.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "format",
+        "type": "'hex' | 'rgb' | 'hsb' | undefined",
+        "description": "Format to use in value binding, supported formats are 'hex', 'rgb' and 'hsb'.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "hex",
+          "rgb",
+          "hsb"
+        ]
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "tabindex",
+        "type": "string | undefined",
+        "description": "Index of the element in tabbing order.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "autoZIndex",
+        "type": "boolean | undefined",
+        "description": "Whether to automatically manage layering.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "baseZIndex",
+        "type": "number | undefined",
+        "description": "Base zIndex value to use in layering.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "inputId",
+        "type": "string | undefined",
+        "description": "Identifier of the focus input to match a label defined for the dropdown.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "panelClass",
+        "type": "any",
+        "description": "Style class of the overlay panel.  [DEPRECATED] since v4.0. Use 'overlayClass' prop instead.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "overlayClass",
+        "type": "any",
+        "description": "Style class of the overlay panel.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "appendTo",
+        "type": "HintedString<'body' | 'self'> | undefined | HTMLElement",
+        "description": "A valid query selector or an HTMLElement to specify where the overlay gets attached. Special keywords are 'body' for document body and 'self' for the element itself.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "MultiSelect",
+    "component": "MultiSelect",
+    "content": "",
+    "defaultProps": {
+      "options": [
+        {
+          "label": "Australia",
+          "value": "au"
+        },
+        {
+          "label": "Brazil",
+          "value": "br"
+        },
+        {
+          "label": "China",
+          "value": "cn"
+        },
+        {
+          "label": "Egypt",
+          "value": "eg"
+        },
+        {
+          "label": "France",
+          "value": "fr"
+        }
+      ],
+      "optionLabel": "label",
+      "optionValue": "value",
+      "placeholder": "Select countries...",
+      "display": "chip"
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "any",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultValue",
+        "type": "any",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "options",
+        "type": "any[] | undefined",
+        "description": "An array of select items to display as the available options.",
+        "priority": "high",
+        "inputType": "readonly"
+      },
+      {
+        "name": "optionLabel",
+        "type": "string | ((data: any) => string) | undefined",
+        "description": "Property name or getter function to use as the label of an option.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionValue",
+        "type": "string | ((data: any) => any) | undefined",
+        "description": "Property name or getter function to use as the value of an option, defaults to the option itself when not defined.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionDisabled",
+        "type": "string | ((data: any) => boolean) | undefined",
+        "description": "Property name or getter function to use as the disabled flag of an option, defaults to false when not defined.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "optionGroupLabel",
+        "type": "string | ((data: any) => string) | undefined",
+        "description": "Property name or getter function to use as the label of an option group.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionGroupChildren",
+        "type": "string | ((data: any) => any[]) | undefined",
+        "description": "Property name or getter function that refers to the children options of option group.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "scrollHeight",
+        "type": "string | undefined",
+        "description": "Height of the viewport, a scrollbar is defined if height of list exceeds this value.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "description": "Label to display when there are no selections.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined",
+        "description": "Defines the size of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "",
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "variant",
+        "type": "'outlined' | 'filled' | undefined",
+        "description": "Specifies the input variant of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "outlined",
+          "filled"
+        ]
+      },
+      {
+        "name": "fluid",
+        "type": "boolean | undefined",
+        "description": "Spans 100% width of the container when enabled.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "inputId",
+        "type": "string | undefined",
+        "description": "Identifier of the underlying input element.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "panelStyle",
+        "type": "any",
+        "description": "[DEPRECATED] since v4.0. Use 'overlayStyle' instead.Inline style of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "panelClass",
+        "type": "any",
+        "description": "[DEPRECATED] since v4.0. Use 'overlayClass' instead.Style class of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "overlayStyle",
+        "type": "any",
+        "description": "Inline style of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "overlayClass",
+        "type": "any",
+        "description": "Style class of the overlay.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "dataKey",
+        "type": "string | undefined",
+        "description": "A property to uniquely identify an option.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "showClear",
+        "type": "boolean | undefined",
+        "description": "When enabled, a clear icon is displayed to clear the value.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "clearIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in clear button.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "resetFilterOnClear",
+        "type": "boolean",
+        "description": "Clears the filter value when clicking on the clear icon.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "filter",
+        "type": "boolean | undefined",
+        "description": "When specified, displays a filter input at header.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "filterPlaceholder",
+        "type": "string | undefined",
+        "description": "Placeholder text to show when filter input is empty.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "filterLocale",
+        "type": "string | undefined",
+        "description": "Locale to use in filtering. The default locale is the host environment's current locale.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterMatchMode",
+        "type": "HintedString<'contains' | 'startsWith' | 'endsWith'> | undefined",
+        "description": "Defines the filtering algorithm to use when searching the options.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterFields",
+        "type": "string[] | undefined",
+        "description": "Fields used when filtering the options, defaults to optionLabel.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "appendTo",
+        "type": "HintedString<'body' | 'self'> | undefined | HTMLElement",
+        "description": "A valid query selector or an HTMLElement to specify where the overlay gets attached. Special keywords are 'body' for document body and 'self' for the element itself.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "display",
+        "type": "'comma' | 'chip' | undefined",
+        "description": "Defines how the selected items are displayed.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "comma",
+          "chip"
+        ]
+      },
+      {
+        "name": "selectedItemsLabel",
+        "type": "string | undefined",
+        "description": "Label to display after exceeding max selected labels.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "maxSelectedLabels",
+        "type": "number | undefined",
+        "description": "Decides how many selected item labels to show at most.",
+        "priority": "high",
+        "inputType": "number"
+      },
+      {
+        "name": "selectionLimit",
+        "type": "number | undefined",
+        "description": "Maximum number of selectable items.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "showToggleAll",
+        "type": "boolean | undefined",
+        "description": "Whether to show the header checkbox to toggle the selection of all items at once.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "loading",
+        "type": "boolean | undefined",
+        "description": "Whether the multiselect is in loading state.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "checkboxIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in the checkboxes.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dropdownIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in the dropdown.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "filterIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in filter input.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "loadingIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in loading state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "removeTokenIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in chip remove action.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "chipIcon",
+        "type": "string | undefined",
+        "description": "Icon to display in chip remove action.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "selectAll",
+        "type": "boolean | undefined",
+        "description": "Whether all data is selected.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "resetFilterOnHide",
+        "type": "boolean | undefined",
+        "description": "Clears the filter value when hiding the dropdown.",
+        "priority": "low",
+        "inputType": "boolean"
+      }
+    ]
+  },
+  {
+    "name": "SelectButton",
+    "component": "SelectButton",
+    "content": "",
+    "defaultProps": {
+      "options": [
+        {
+          "label": "Small",
+          "value": "S"
+        },
+        {
+          "label": "Medium",
+          "value": "M"
+        },
+        {
+          "label": "Large",
+          "value": "L"
+        }
+      ],
+      "optionLabel": "label",
+      "optionValue": "value",
+      "modelValue": "M"
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "any",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "defaultValue",
+        "type": "any",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "options",
+        "type": "any[] | undefined",
+        "description": "An array of selectitems to display as the available options.",
+        "priority": "high",
+        "inputType": "readonly"
+      },
+      {
+        "name": "optionLabel",
+        "type": "string | ((data: any) => string) | undefined",
+        "description": "Property name or getter function to use as the label of an option.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionValue",
+        "type": "string | ((data: any) => any) | undefined",
+        "description": "Property name or getter function to use as the value of an option, defaults to the option itself when not defined.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "optionDisabled",
+        "type": "string | ((data: any) => boolean) | undefined",
+        "description": "Property name or getter function to use as the disabled flag of an option, defaults to false when not defined.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "description": "When specified, allows selecting multiple values.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the element should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "dataKey",
+        "type": "string | undefined",
+        "description": "A property to uniquely identify an option.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "allowEmpty",
+        "type": "boolean | undefined",
+        "description": "Whether selection can be cleared.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "ariaLabelledby",
+        "type": "string | undefined",
+        "description": "Identifier of the underlying element.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "size",
+        "type": "'small' | 'large' | undefined",
+        "description": "Defines the size of the component.",
+        "priority": "high",
+        "inputType": "select",
+        "options": [
+          "",
+          "small",
+          "large"
+        ]
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "Slider",
+    "component": "Slider",
+    "content": "",
+    "defaultProps": {
+      "modelValue": 50,
+      "min": 0,
+      "max": 100,
+      "step": 1
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "number | number[] | undefined",
+        "description": "Value of the component.",
+        "priority": "high",
+        "inputType": "number"
+      },
+      {
+        "name": "defaultValue",
+        "type": "number | number[] | undefined",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "number"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "min",
+        "type": "number | undefined",
+        "description": "Mininum boundary value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "description": "Maximum boundary value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "orientation",
+        "type": "'horizontal' | 'vertical' | undefined",
+        "description": "Orientation of the slider.",
+        "priority": "low",
+        "inputType": "select",
+        "options": [
+          "horizontal",
+          "vertical"
+        ]
+      },
+      {
+        "name": "step",
+        "type": "number | undefined",
+        "description": "Step factor to increment/decrement the value.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "range",
+        "type": "boolean | undefined",
+        "description": "When speficed, allows two boundary values to be picked.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "tabindex",
+        "type": "number | undefined",
+        "description": "Index of the element in tabbing order.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "ariaLabelledby",
+        "type": "string | undefined",
+        "description": "Establishes relationships between the component and label(s) where its value should be one or more element IDs.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "description": "Used to define a string that labels the element.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  },
+  {
+    "name": "TextArea",
+    "component": "Textarea",
+    "content": "",
+    "defaultProps": {
+      "modelValue": "This is a sample text in the textarea component.",
+      "placeholder": "Enter your message...",
+      "rows": 4
+    },
+    "props": []
+  },
+  {
+    "name": "ToggleSwitch",
+    "component": "ToggleSwitch",
+    "content": "",
+    "defaultProps": {
+      "modelValue": true
+    },
+    "props": [
+      {
+        "name": "modelValue",
+        "type": "boolean | string | undefined",
+        "description": "Specifies whether a toggleswitch should be checked or not.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "defaultValue",
+        "type": "boolean | string | undefined",
+        "description": "The default value for the input when not controlled by `modelValue`.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "description": "The name attribute for the element, typically used in form submissions.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "trueValue",
+        "type": "any",
+        "description": "Value in checked state.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "falseValue",
+        "type": "any",
+        "description": "Value in unchecked state.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "invalid",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should have invalid state style.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that the component should be disabled.",
+        "priority": "high",
+        "inputType": "boolean"
+      },
+      {
+        "name": "readonly",
+        "type": "boolean | undefined",
+        "description": "When present, it specifies that an input field is read-only.",
+        "priority": "low",
+        "inputType": "boolean"
+      },
+      {
+        "name": "tabindex",
+        "type": "number | undefined",
+        "description": "Index of the element in tabbing order.",
+        "priority": "low",
+        "inputType": "number"
+      },
+      {
+        "name": "inputId",
+        "type": "string | undefined",
+        "description": "Identifier of the underlying input element.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "inputClass",
+        "type": "string | object | undefined",
+        "description": "Style class of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "inputStyle",
+        "type": "object | undefined",
+        "description": "Inline style of the input field.",
+        "priority": "medium",
+        "inputType": "text"
+      },
+      {
+        "name": "ariaLabelledby",
+        "type": "string | undefined",
+        "description": "Establishes relationships between the component and label(s) where its value should be one or more element IDs.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "ariaLabel",
+        "type": "string | undefined",
+        "description": "Establishes a string value that labels the component.",
+        "priority": "high",
+        "inputType": "text"
+      },
+      {
+        "name": "formControl",
+        "type": "Record<string, any> | undefined",
+        "description": "Form control object, typically used for handling validation and form state.",
+        "priority": "low",
+        "inputType": "text"
+      },
+      {
+        "name": "dt",
+        "type": "DesignToken<any>",
+        "description": "It generates scoped CSS variables using design tokens for the component.",
+        "priority": "low",
+        "inputType": "text"
+      }
+    ]
+  }
+]
