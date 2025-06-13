@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrimeVue Component Prop Playground</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/primevue@4/umd/primevue.min.js"></script>
+    <link href="https://unpkg.com/primevue@4/resources/themes/aura-light-blue/theme.css" rel="stylesheet">
+    <link href="https://unpkg.com/primevue@4/resources/primevue.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/primeicons/primeicons.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+        }
+        
+        .playground {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            height: 100vh;
+            gap: 1rem;
+            padding: 1rem;
+        }
+        
+        .preview-area {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .controls-panel {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .component-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .component-selector select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        .prop-group {
+            margin-bottom: 2rem;
+        }
+        
+        .prop-group h3 {
+            color: #374151;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .prop-control {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        .prop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .prop-name {
+            font-weight: 600;
+            color: #1f2937;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .prop-type {
+            font-size: 0.75rem;
+            color: #6b7280;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .prop-description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-bottom: 0.75rem;
+        }
+        
+        .prop-input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+        
+        .checkbox-input {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+        
+        .priority-high { border-left: 4px solid #ef4444; }
+        .priority-medium { border-left: 4px solid #f59e0b; }
+        .priority-low { border-left: 4px solid #10b981; }
+        
+        .component-preview {
+            padding: 2rem;
+            border: 2px dashed #e5e7eb;
+            border-radius: 12px;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .api-decision {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .api-decision h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+        }
+        
+        .expose-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .expose-toggle input[type="checkbox"] {
+            transform: scale(1.2);
+        }
+        
+        .code-output {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .header h1 {
+            color: #1f2937;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="playground">
+            <div class="preview-area">
+                <div class="header">
+                    <h1>PrimeVue Component Playground</h1>
+                    <p>Explore props visually to decide which ones to expose in your SDK</p>
+                </div>
+                
+                <div class="component-preview">
+                    <component 
+                        :is="selectedComponent" 
+                        v-bind="currentProps"
+                        @update:modelValue="onModelValueUpdate"
+                        v-if="selectedComponent"
+                    >
+                        {{ componentContent }}
+                    </component>
+                </div>
+                
+                <div class="code-output" v-if="exposedPropsCode">
+                    <h4 style="color: #f59e0b; margin-bottom: 1rem;">Generated SDK API Interface:</h4>
+                    {{ exposedPropsCode }}
+                </div>
+            </div>
+            
+            <div class="controls-panel">
+                <div class="component-selector">
+                    <label for="component-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Component:</label>
+                    <select id="component-select" v-model="selectedComponentName" @change="switchComponent">
+                        <option value="">Select a component...</option>
+                        <option v-for="comp in availableComponents" :key="comp.name" :value="comp.name">
+                            {{ comp.name }}
+                        </option>
+                    </select>
+                </div>
+                
+                <div v-if="selectedComponentName" class="prop-groups">
+                    <div v-for="group in propGroups" :key="group.name" class="prop-group">
+                        <h3>{{ group.name }} ({{ group.props.length }} props)</h3>
+                        
+                        <div 
+                            v-for="prop in group.props" 
+                            :key="prop.name"
+                            :class="['prop-control', `priority-${group.priority}`]"
+                        >
+                            <div class="prop-header">
+                                <span class="prop-name">{{ prop.name }}</span>
+                                <span class="prop-type">{{ prop.type }}</span>
+                            </div>
+                            
+                            <div class="prop-description">{{ prop.description || 'No description available' }}</div>
+                            
+                            <div style="margin-bottom: 0.75rem;">
+                                <component 
+                                    :is="getInputComponent(prop)"
+                                    v-model="currentProps[prop.name]"
+                                    v-bind="getInputProps(prop)"
+                                    @update:modelValue="updateProp(prop.name, $event)"
+                                />
+                            </div>
+                            
+                            <div class="api-decision">
+                                <h4>SDK API Decision:</h4>
+                                <label class="expose-toggle">
+                                    <input 
+                                        type="checkbox" 
+                                        v-model="exposedProps[prop.name]"
+                                        @change="updateExposedProps"
+                                    />
+                                    Expose this prop in SDK
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+        
+        createApp({
+            data() {
+                return {
+                    selectedComponentName: 'Button',
+                    selectedComponent: null,
+                    currentProps: {},
+                    exposedProps: {},
+                    exposedPropsCode: '',
+                    
+                    availableComponents: [
+                        { 
+                            name: 'Button', 
+                            component: 'Button',
+                            content: 'Click Me',
+                            defaultProps: {
+                                label: 'Click Me',
+                                icon: 'pi pi-check',
+                                iconPos: 'left'
+                            },
+                            props: [
+                                { name: 'label', type: 'string', description: 'Text of the button', priority: 'high', inputType: 'text' },
+                                { name: 'icon', type: 'string', description: 'Name of the icon', priority: 'medium', inputType: 'text' },
+                                { name: 'iconPos', type: "'left' | 'right' | 'top' | 'bottom'", description: 'Position of the icon', priority: 'medium', inputType: 'select', options: ['left', 'right', 'top', 'bottom'] },
+                                { name: 'loading', type: 'boolean', description: 'Whether the button is in loading state', priority: 'medium', inputType: 'boolean' },
+                                { name: 'disabled', type: 'boolean', description: 'When present, it specifies that the element should be disabled', priority: 'high', inputType: 'boolean' },
+                                { name: 'size', type: "'small' | 'large'", description: 'Defines the size of the button', priority: 'high', inputType: 'select', options: ['', 'small', 'large'] },
+                                { name: 'severity', type: 'string', description: 'Defines the style of the button', priority: 'medium', inputType: 'select', options: ['', 'secondary', 'success', 'info', 'warn', 'help', 'danger', 'contrast'] },
+                                { name: 'raised', type: 'boolean', description: 'Add a shadow to indicate elevation', priority: 'low', inputType: 'boolean' },
+                                { name: 'rounded', type: 'boolean', description: 'Add a circular border radius to the button', priority: 'low', inputType: 'boolean' },
+                                { name: 'text', type: 'boolean', description: 'Add a textual class to the button without a background initially', priority: 'medium', inputType: 'boolean' },
+                                { name: 'outlined', type: 'boolean', description: 'Add a border class without a background initially', priority: 'medium', inputType: 'boolean' },
+                                { name: 'link', type: 'boolean', description: 'Add a link style to the button', priority: 'low', inputType: 'boolean' },
+                                { name: 'fluid', type: 'boolean', description: 'Spans 100% width of the container when enabled', priority: 'low', inputType: 'boolean' }
+                            ]
+                        },
+                        { 
+                            name: 'InputText', 
+                            component: 'InputText',
+                            content: '',
+                            defaultProps: {
+                                modelValue: 'Sample text',
+                                placeholder: 'Enter text...'
+                            },
+                            props: [
+                                { name: 'modelValue', type: 'string', description: 'Value of the component', priority: 'high', inputType: 'text' },
+                                { name: 'placeholder', type: 'string', description: 'Placeholder text for the input', priority: 'high', inputType: 'text' },
+                                { name: 'disabled', type: 'boolean', description: 'When present, it specifies that the element should be disabled', priority: 'high', inputType: 'boolean' },
+                                { name: 'readonly', type: 'boolean', description: 'When present, it specifies that an input field is read-only', priority: 'medium', inputType: 'boolean' },
+                                { name: 'size', type: "'small' | 'large'", description: 'Defines the size of the component', priority: 'high', inputType: 'select', options: ['', 'small', 'large'] },
+                                { name: 'variant', type: "'outlined' | 'filled'", description: 'Specifies the input variant of the component', priority: 'medium', inputType: 'select', options: ['outlined', 'filled'] },
+                                { name: 'invalid', type: 'boolean', description: 'When present, it specifies that the component should have invalid state style', priority: 'medium', inputType: 'boolean' },
+                                { name: 'fluid', type: 'boolean', description: 'Spans 100% width of the container when enabled', priority: 'low', inputType: 'boolean' }
+                            ]
+                        },
+                        { 
+                            name: 'Select', 
+                            component: 'Select',
+                            content: '',
+                            defaultProps: {
+                                options: [
+                                    { label: 'Option 1', value: 'opt1' },
+                                    { label: 'Option 2', value: 'opt2' },
+                                    { label: 'Option 3', value: 'opt3' }
+                                ],
+                                optionLabel: 'label',
+                                optionValue: 'value',
+                                placeholder: 'Select an option...'
+                            },
+                            props: [
+                                { name: 'modelValue', type: 'any', description: 'Value of the component', priority: 'high', inputType: 'text' },
+                                { name: 'options', type: 'any[]', description: 'An array of select items to display as available options', priority: 'high', inputType: 'readonly' },
+                                { name: 'optionLabel', type: 'string', description: 'Property name to use as the label of an option', priority: 'high', inputType: 'text' },
+                                { name: 'optionValue', type: 'string', description: 'Property name to use as the value of an option', priority: 'high', inputType: 'text' },
+                                { name: 'placeholder', type: 'string', description: 'Default text to display when no option is selected', priority: 'high', inputType: 'text' },
+                                { name: 'disabled', type: 'boolean', description: 'When present, it specifies that the component should be disabled', priority: 'high', inputType: 'boolean' },
+                                { name: 'size', type: "'small' | 'large'", description: 'Defines the size of the component', priority: 'high', inputType: 'select', options: ['', 'small', 'large'] },
+                                { name: 'variant', type: "'outlined' | 'filled'", description: 'Specifies the input variant of the component', priority: 'medium', inputType: 'select', options: ['outlined', 'filled'] },
+                                { name: 'invalid', type: 'boolean', description: 'When present, it specifies that the component should have invalid state style', priority: 'medium', inputType: 'boolean' },
+                                { name: 'filter', type: 'boolean', description: 'When specified, displays a filter input at header', priority: 'medium', inputType: 'boolean' },
+                                { name: 'showClear', type: 'boolean', description: 'When enabled, a clear icon is displayed to clear the value', priority: 'medium', inputType: 'boolean' },
+                                { name: 'fluid', type: 'boolean', description: 'Spans 100% width of the container when enabled', priority: 'low', inputType: 'boolean' }
+                            ]
+                        },
+                        { 
+                            name: 'ToggleSwitch', 
+                            component: 'ToggleSwitch',
+                            content: '',
+                            defaultProps: {
+                                modelValue: true
+                            },
+                            props: [
+                                { name: 'modelValue', type: 'boolean', description: 'Specifies whether a toggleswitch should be checked or not', priority: 'high', inputType: 'boolean' },
+                                { name: 'disabled', type: 'boolean', description: 'When present, it specifies that the component should be disabled', priority: 'high', inputType: 'boolean' },
+                                { name: 'readonly', type: 'boolean', description: 'When present, it specifies that an input field is read-only', priority: 'medium', inputType: 'boolean' },
+                                { name: 'invalid', type: 'boolean', description: 'When present, it specifies that the component should have invalid state style', priority: 'medium', inputType: 'boolean' },
+                                { name: 'trueValue', type: 'any', description: 'Value in checked state', priority: 'low', inputType: 'text' },
+                                { name: 'falseValue', type: 'any', description: 'Value in unchecked state', priority: 'low', inputType: 'text' }
+                            ]
+                        },
+                        { 
+                            name: 'Slider', 
+                            component: 'Slider',
+                            content: '',
+                            defaultProps: {
+                                modelValue: 50,
+                                min: 0,
+                                max: 100
+                            },
+                            props: [
+                                { name: 'modelValue', type: 'number | number[]', description: 'Value of the component', priority: 'high', inputType: 'number' },
+                                { name: 'min', type: 'number', description: 'Minimum boundary value', priority: 'high', inputType: 'number' },
+                                { name: 'max', type: 'number', description: 'Maximum boundary value', priority: 'high', inputType: 'number' },
+                                { name: 'step', type: 'number', description: 'Step factor to increment/decrement the value', priority: 'medium', inputType: 'number' },
+                                { name: 'range', type: 'boolean', description: 'When specified, allows two boundary values to be picked', priority: 'medium', inputType: 'boolean' },
+                                { name: 'orientation', type: "'horizontal' | 'vertical'", description: 'Orientation of the slider', priority: 'medium', inputType: 'select', options: ['horizontal', 'vertical'] },
+                                { name: 'disabled', type: 'boolean', description: 'When present, it specifies that the component should be disabled', priority: 'high', inputType: 'boolean' },
+                                { name: 'invalid', type: 'boolean', description: 'When present, it specifies that the component should have invalid state style', priority: 'medium', inputType: 'boolean' }
+                            ]
+                        }
+                    ]
+                }
+            },
+            
+            computed: {
+                componentContent() {
+                    const component = this.availableComponents.find(c => c.name === this.selectedComponentName);
+                    return component ? component.content : '';
+                },
+                
+                propGroups() {
+                    if (!this.selectedComponentName) return [];
+                    
+                    const component = this.availableComponents.find(c => c.name === this.selectedComponentName);
+                    if (!component) return [];
+                    
+                    const groups = {
+                        high: { name: '🔴 Core Props', priority: 'high', props: [] },
+                        medium: { name: '🟡 Styling Props', priority: 'medium', props: [] },
+                        low: { name: '🟢 Advanced Props', priority: 'low', props: [] }
+                    };
+                    
+                    component.props.forEach(prop => {
+                        groups[prop.priority].props.push(prop);
+                    });
+                    
+                    return Object.values(groups).filter(group => group.props.length > 0);
+                }
+            },
+            
+            mounted() {
+                // Register PrimeVue components
+                this.$primevue = PrimeVue;
+                
+                // Initialize with Button component
+                this.switchComponent();
+            },
+            
+            methods: {
+                switchComponent() {
+                    if (!this.selectedComponentName) {
+                        this.selectedComponent = null;
+                        return;
+                    }
+                    
+                    const component = this.availableComponents.find(c => c.name === this.selectedComponentName);
+                    if (!component) return;
+                    
+                    this.selectedComponent = component.component;
+                    this.currentProps = { ...component.defaultProps };
+                    
+                    // Initialize exposed props (start with core props exposed)
+                    this.exposedProps = {};
+                    component.props.forEach(prop => {
+                        this.exposedProps[prop.name] = prop.priority === 'high';
+                    });
+                    
+                    this.updateExposedProps();
+                },
+                
+                updateProp(propName, value) {
+                    this.currentProps[propName] = value;
+                },
+                
+                onModelValueUpdate(value) {
+                    this.currentProps.modelValue = value;
+                },
+                
+                updateExposedProps() {
+                    const component = this.availableComponents.find(c => c.name === this.selectedComponentName);
+                    if (!component) return;
+                    
+                    const exposedPropsList = Object.keys(this.exposedProps).filter(prop => this.exposedProps[prop]);
+                    const exposedPropsDetails = component.props.filter(prop => exposedPropsList.includes(prop.name));
+                    
+                    // Generate TypeScript interface
+                    let code = `interface ${this.selectedComponentName}Props {\n`;
+                    exposedPropsDetails.forEach(prop => {
+                        const optional = prop.name !== 'modelValue' ? '?' : '';
+                        code += `  ${prop.name}${optional}: ${prop.type};\n`;
+                    });
+                    code += `}\n\n`;
+                    
+                    code += `// Exposed props count: ${exposedPropsList.length} / ${component.props.length}\n`;
+                    code += `// Core props: ${exposedPropsDetails.filter(p => p.priority === 'high').length}\n`;
+                    code += `// Styling props: ${exposedPropsDetails.filter(p => p.priority === 'medium').length}\n`;
+                    code += `// Advanced props: ${exposedPropsDetails.filter(p => p.priority === 'low').length}`;
+                    
+                    this.exposedPropsCode = code;
+                },
+                
+                getInputComponent(prop) {
+                    switch (prop.inputType) {
+                        case 'boolean':
+                            return 'input';
+                        case 'number':
+                            return 'input';
+                        case 'select':
+                            return 'select';
+                        case 'readonly':
+                            return 'div';
+                        default:
+                            return 'input';
+                    }
+                },
+                
+                getInputProps(prop) {
+                    const base = {
+                        class: 'prop-input'
+                    };
+                    
+                    switch (prop.inputType) {
+                        case 'boolean':
+                            return { ...base, type: 'checkbox', class: 'checkbox-input' };
+                        case 'number':
+                            return { ...base, type: 'number' };
+                        case 'select':
+                            return base;
+                        case 'readonly':
+                            return { style: 'color: #6b7280; font-style: italic;' };
+                        default:
+                            return { ...base, type: 'text' };
+                    }
+                }
+            },
+            
+            template: `
+                <div class="playground">
+                    <div class="preview-area">
+                        <div class="header">
+                            <h1>PrimeVue Component Playground</h1>
+                            <p>Explore props visually to decide which ones to expose in your SDK</p>
+                        </div>
+                        
+                        <div class="component-preview">
+                            <component 
+                                :is="selectedComponent" 
+                                v-bind="currentProps"
+                                @update:modelValue="onModelValueUpdate"
+                                v-if="selectedComponent"
+                            >
+                                {{ componentContent }}
+                            </component>
+                        </div>
+                        
+                        <div class="code-output" v-if="exposedPropsCode">
+                            <h4 style="color: #f59e0b; margin-bottom: 1rem;">Generated SDK API Interface:</h4>
+                            {{ exposedPropsCode }}
+                        </div>
+                    </div>
+                    
+                    <div class="controls-panel">
+                        <div class="component-selector">
+                            <label for="component-select" style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Component:</label>
+                            <select id="component-select" v-model="selectedComponentName" @change="switchComponent">
+                                <option value="">Select a component...</option>
+                                <option v-for="comp in availableComponents" :key="comp.name" :value="comp.name">
+                                    {{ comp.name }}
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <div v-if="selectedComponentName" class="prop-groups">
+                            <div v-for="group in propGroups" :key="group.name" class="prop-group">
+                                <h3>{{ group.name }} ({{ group.props.length }} props)</h3>
+                                
+                                <div 
+                                    v-for="prop in group.props" 
+                                    :key="prop.name"
+                                    :class="['prop-control', 'priority-' + group.priority]"
+                                >
+                                    <div class="prop-header">
+                                        <span class="prop-name">{{ prop.name }}</span>
+                                        <span class="prop-type">{{ prop.type }}</span>
+                                    </div>
+                                    
+                                    <div class="prop-description">{{ prop.description || 'No description available' }}</div>
+                                    
+                                    <div style="margin-bottom: 0.75rem;">
+                                        <input 
+                                            v-if="prop.inputType === 'text'"
+                                            type="text"
+                                            class="prop-input"
+                                            v-model="currentProps[prop.name]"
+                                        />
+                                        <input 
+                                            v-else-if="prop.inputType === 'number'"
+                                            type="number"
+                                            class="prop-input"
+                                            v-model="currentProps[prop.name]"
+                                        />
+                                        <input 
+                                            v-else-if="prop.inputType === 'boolean'"
+                                            type="checkbox"
+                                            class="checkbox-input"
+                                            v-model="currentProps[prop.name]"
+                                        />
+                                        <select 
+                                            v-else-if="prop.inputType === 'select'"
+                                            class="prop-input"
+                                            v-model="currentProps[prop.name]"
+                                        >
+                                            <option v-for="option in prop.options" :key="option" :value="option">
+                                                {{ option || '(default)' }}
+                                            </option>
+                                        </select>
+                                        <div 
+                                            v-else-if="prop.inputType === 'readonly'"
+                                            style="color: #6b7280; font-style: italic;"
+                                        >
+                                            [Complex object - not editable in playground]
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="api-decision">
+                                        <h4>SDK API Decision:</h4>
+                                        <label class="expose-toggle">
+                                            <input 
+                                                type="checkbox" 
+                                                v-model="exposedProps[prop.name]"
+                                                @change="updateExposedProps"
+                                            />
+                                            Expose this prop in SDK
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `
+        }).mount('#app');
+    </script>
+</body>
+</html>
