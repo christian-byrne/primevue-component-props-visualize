@@ -2165,7 +2165,7 @@
     "component": "Image",
     "content": "",
     "defaultProps": {
-      "src": "https://primefaces.org/cdn/primevue/images/galleria/galleria1.jpg",
+      "src": "https://picsum.photos/400/300",
       "preview": true
     },
     "props": [
@@ -2260,7 +2260,8 @@
     "component": "ImageCompare",
     "content": "",
     "defaultProps": {
-      "tabindex": 0
+      "leftImage": "https://picsum.photos/400/300?random=1",
+      "rightImage": "https://picsum.photos/400/300?random=2"
     },
     "props": [
       {
@@ -2321,16 +2322,22 @@
     "defaultProps": {
       "value": [
         {
-          "itemImageSrc": "https://primefaces.org/cdn/primevue/images/galleria/galleria1.jpg",
-          "thumbnailImageSrc": "https://primefaces.org/cdn/primevue/images/galleria/galleria1s.jpg",
-          "alt": "Description for Image 1",
-          "title": "Title 1"
+          "itemImageSrc": "https://picsum.photos/600/400?random=10",
+          "thumbnailImageSrc": "https://picsum.photos/150/100?random=10",
+          "alt": "Random placeholder image 1",
+          "title": "Placeholder Image 1"
         },
         {
-          "itemImageSrc": "https://primefaces.org/cdn/primevue/images/galleria/galleria2.jpg",
-          "thumbnailImageSrc": "https://primefaces.org/cdn/primevue/images/galleria/galleria2s.jpg",
-          "alt": "Description for Image 2",
-          "title": "Title 2"
+          "itemImageSrc": "https://picsum.photos/600/400?random=11",
+          "thumbnailImageSrc": "https://picsum.photos/150/100?random=11",
+          "alt": "Random placeholder image 2",
+          "title": "Placeholder Image 2"
+        },
+        {
+          "itemImageSrc": "https://picsum.photos/600/400?random=12",
+          "thumbnailImageSrc": "https://picsum.photos/150/100?random=12",
+          "alt": "Random placeholder image 3",
+          "title": "Placeholder Image 3"
         }
       ],
       "activeIndex": 0,
